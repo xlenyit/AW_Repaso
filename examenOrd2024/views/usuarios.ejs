@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <h1> Te quiero :) </h1>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <table class=" table table-striped table-bordered">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Foto</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <%usuariosList.forEach(ele=>{%>
+                        <tr>
+                            <th><%=ele.nombre%></th>
+                            <th><img src="/uploads/<%=ele.foto%>"></th>
+                        </tr>
+                        <%})%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

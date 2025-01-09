@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Contactos</title>
+  <script src="../javascripts/jquery.min.js"></script>
+  <script src="../javascripts/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="mt-5">Lista de Contactos</h1>
+
+    <div id="contactosList" class="mb-3">
+      <ul class="list-group">
+        <% contactos.forEach(contacto => { %>
+          <li class="list-group-item">
+            <strong>ID:</strong> <%= contacto.id %> <br>
+            <strong>Nombre:</strong> <%= contacto.nombre %> <br>
+            <strong>Teléfonos:</strong>
+            <ul>
+              <% Object.entries(contacto.telefonos).forEach(([tipo, numero]) => { %>
+                <li><strong><%= tipo %>:</strong> <%= numero %></li>
+              <% }) %>
+            </ul>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+
+    <div class="mb-3">
+      <a href="/" class="btn btn-primary">Volver</a>
+    </div>
+  </div>
+</body>
+</html>

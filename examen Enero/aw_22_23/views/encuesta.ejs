@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de 10</title>
+</head>
+<body>
+    <h1>Bienvenido al servicio de encuestas de Inditex</h1>
+    <h2>Por favor rellene esta breve encuesta</h2>
+    <div>
+        <form action="upload" method="POST">
+            <fieldset>
+                <legend>Rango de edad</legend>
+                <p>
+                    <input name="edad" value="Menor de 20" type="radio">
+                    <label>Menor de 20</label>
+                </p>
+                <p>
+                    <input name="edad" value="De 20 a 30" type="radio">
+                    <label>De 20 a 30</label>
+                </p>
+                <p>
+                    <input name="edad" value="De 30 a 40" type="radio">
+                    <label>De 30 a 40</label>
+                </p>
+                <p>
+                    <input name="edad" value="Mayor de 40" type="radio">
+                    <label>Mayor de 40</label>
+                </p>
+            </fieldset>
+            <fieldset>
+                <legend>Como nos has conocido</legend>
+                    <select name="conocido">
+                        <option hidden>Seleccione una opción</option>
+                        <option value="Buscador de internet">Buscador de internet</option>
+                        <option value="Redes sociales">Redes sociales</option>
+                        <option value="Campaña de prensa y tv">Campaña de prensa y tv</option>
+                        <option value="Amigos">Amigos</option>
+                        <option value="Otros">Otros</option>
+                    </select>    
+            </fieldset>
+            <fieldset>
+                <legend>Lugar de residencia</legend>
+                <p>
+                    <input name="lugar" value="Madrid" type="radio">
+                    <label>Madrid</label>
+                </p>
+                <p>
+                    <input name="lugar" value="Comunidad de Madrid" type="radio">
+                    <label>Comunidad de Madrid</label>
+                </p>
+                <p>
+                    <input name="lugar" value="Resto del territorio" type="radio">
+                    <label>Resto del territorio</label>
+                </p>
+                <p>
+                    <input name="lugar" value="Fuera de España" type="radio">
+                    <label>Fuera de España</label>
+                </p>
+            </fieldset>
+           <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

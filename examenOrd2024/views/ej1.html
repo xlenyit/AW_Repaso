@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../public/javascripts/jquery.min.js"></script>
+    <script src="../public/javascripts/bootstrap.min.js"></script>
+    <link href="../public/stylesheets/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="bg-light d-flex align-items-center justify-content-between mx-3">
+        <img src="../public/images/logos/ucm_logo_header.png" alt="Logo de la ucm">
+        <h1>Título de la Página</h1>
+        <button id="openModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button id="openModal" type="button" class="btn btn-primary" data-target="#exampleModal">
+            Configurar Página
+        </button>
+    </header>
+    <nav class="bg-dark text-white p-3">
+        <a class="nav-item">Inicio</a>
+        <a class="nav-item">Acerca de</a>
+        <a class="nav-item">Contacto</a>
+    </nav>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Config</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form id="styleForm">
+                    <!-- Tamaño de fuente -->
+                    <div class="form-group">
+                        <label for="fontSize">Tamaño de fuente para títulos y textos:</label>
+                        <input type="number" class="form-control" id="fontSize" min="10" max="100" step="1" placeholder="Ingrese tamaño de fuente (px)">
+                    </div>
+            
+                    <!-- Color de títulos y textos -->
+                    <div class="form-group">
+                        <label for="titleTextColor">Color de títulos y textos:</label>
+                        <input type="color" class="form-control" id="titleTextColor">
+                    </div>
+            
+                    <!-- Color de fondo de secciones -->
+                    <div class="form-group">
+                        <label for="sectionBgColor">Color de fondo de las secciones:</label>
+                        <input type="color" class="form-control" id="sectionBgColor">
+                    </div>
+            
+                    <!-- Color de fondo de sección 1 -->
+                    <div class="form-group">
+                        <label for="section1BgColor">Color de fondo de la sección 1:</label>
+                        <input type="color" class="form-control" id="section1BgColor">
+                    </div>
+            
+                    <!-- Color de fondo de sección 2 -->
+                    <div class="form-group">
+                        <label for="section2BgColor">Color de fondo de la sección 2:</label>
+                        <input type="color" class="form-control" id="section2BgColor">
+                    </div>
+            
+                    <!-- Color de fondo para cabecera -->
+                    <div class="form-group">
+                        <label for="headerBgColor">Color de fondo de la cabecera:</label>
+                        <input type="color" class="form-control" id="headerBgColor">
+                    </div>
+            
+                    <!-- Color de fondo para footer -->
+                    <div class="form-group">
+                        <label for="footerBgColor">Color de fondo del footer:</label>
+                        <input type="color" class="form-control" id="footerBgColor">
+                    </div>
+            
+                    <!-- Color para los enlaces -->
+                    <div class="form-group">
+                        <label for="linkColor">Color de enlaces (sin visitar y visitados):</label>
+                        <input type="color" class="form-control" id="linkColor">
+                    </div>
+            
+                    <!-- Subrayado de enlaces -->
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="underlineLinks">
+                        <label class="form-check-label" for="underlineLinks">Subrayar enlaces</label>
+                    </div>
+            
+                    <!-- Color de fondo de la barra de navegación -->
+                    <div class="form-group">
+                        <label for="navbarBgColor">Color de fondo de la barra de navegación:</label>
+                        <input type="color" class="form-control" id="navbarBgColor">
+                    </div>
+            
+                    <!-- Color de los enlaces de la barra de navegación -->
+                    <div class="form-group">
+                        <label for="navbarLinkColor">Color de enlaces de la barra de navegación:</label>
+                        <input type="color" class="form-control" id="navbarLinkColor">
+                    </div>
+            
+                    <!-- Subrayado de los enlaces de la barra de navegación -->
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="navbarUnderlineLinks">
+                        <label class="form-check-label" for="navbarUnderlineLinks">Subrayar enlaces de la barra de navegación</label>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" id="applyChanges" class="btn btn-primary">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container my-4">
+        <div class="section"></div>
+        <section class="bg-light p-3 my-2">
+            <h3>Sección 1</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur quisquam excepturi culpa
+                voluptates fugit eos eum delectus molestiae est aut, nobis necessitatibus, unde at labore illo possimus
+                doloribus exercitationem? Praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem,
+                illum. Magni tempore doloribus deserunt explicabo, possimus facere voluptas magnam mollitia at iste ab
+                quisquam, ipsum hic eum animi consectetur tempora.</p>
+        </section>
+        <section class="bg-light p-3 my-2">
+            <h3>Sección 2</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur quisquam excepturi culpa
+                voluptates fugit eos eum delectus molestiae est aut, nobis necessitatibus, unde at labore illo possimus
+                doloribus exercitationem? Praesentium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
+                ducimus sapiente qui quia! Corporis ipsum aperiam recusandae sunt explicabo maxime itaque, incidunt sint
+                blanditiis mollitia. Veritatis doloremque minus eos suscipit?</p>
+        </section>
+    </div>
+
+    <footer class="bg-dark text-white d-flex justify-content-between p-2">
+        <div class="col d-flex flex-column">
+            <a>Inicio</a><br>
+            <a>Acerca de</a><br>
+            <a>Contacto</a>
+        </div>
+        <div class="col-2 d-flex flex-column">
+            <img src="../public/images/logos/ucm_logo_footer.png" alt="Logo de la ucm" class="img-fluid mb-2 ">
+            <p>dir</p>
+            <p>tel</p>
+            <p>fax</p>
+        </div>
+    </footer>
+
+
+</body>
+
+<script src="../public/javascripts/ej1.js"></script>
+</html>

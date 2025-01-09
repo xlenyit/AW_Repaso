@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/style.css">
+
+  <script src="javascripts/jquery.min.js"></script>
+  <script src="javascripts/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+
+  <title>Usuarios Registrados</title>
+</head>
+
+<body>
+
+  <div class="container mt-5">
+    <h1>Usuarios Registrados</h1>
+    <% if (users.length===0) { %>
+      <p>No hay usuarios registrados.</p>
+      <% } else { %>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Foto</th>
+              <th>Nombre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach(function(user) { %>
+              <tr>
+                <td><img src="/uploads/<%= user.photo %>" alt="<%= user.name %>" class="img-thumbnail" width="100"></td>
+                <td>
+                  <%= user.name %>
+                    <%= user.lastName %>
+                </td>
+              </tr>
+              <% }); %>
+          </tbody>
+        </table>
+        <% } %>
+          <a href="/register" class="btn btn-primary mt-3">Registrar Nuevo Usuario</a>
+  </div>
+
+  <!-- 
+  <h1>Usuarios Registrados</h1>
+  <div id="userList">  -->
+  <%# if (users.length===0) { %>
+    <!--  <p>No hay usuarios registrados.</p>
+    <%# } else { %>
+      <table>
+        <tr>
+          <th>Foto</th>
+          <th>Nombre</th>
+        </tr>
+        <%# users.forEach(user => { %>
+          <tr>
+            <td><img src="/uploads/<%#= user.photo %>" alt="<%#= user.name %>"></td>
+            <td><%#= user.name %> <%#= user.lastName %></td>
+          </tr>
+        <%# }) %>
+      </table>
+    <%# } %>
+  </div>
+  <a href="/register">Registrar Nuevo Usuario</a> -->
+
+
+
+    <!-- 
+  <h1>Usuarios Registrados</h1>
+  <div id="userList"></div>
+  <a href="/register">Registrar Nuevo Usuario</a>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Cargar lista de usuarios al cargar la pÃ¡gina
+      $.get('/users', function (data) {
+
+        const userList = $('#userList');
+        if (data.length === 0) {
+          userList.text('No hay usuarios registrados.');
+        } else {
+          const table = $('<table>').append('<tr><th>Foto</th><th>Nombre</th></tr>');
+          data.forEach(user => {
+            const row = $('<tr>').append(
+              `<td><img src="/uploads/${user.photo}" alt="${user.name}"></td>`,
+              `<td>${user.name} ${user.lastName}</td>`
+            );
+            table.append(row);
+          });
+          userList.html(table);
+        }
+      
+      
+      
+      });
+    });
+  </script>
+  -->
+
+
+</body>
+
+</html>

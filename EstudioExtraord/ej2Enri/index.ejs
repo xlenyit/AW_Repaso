@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Gestión de Usuarios</h1>
+
+        <div id="userDisplay" class="mt-4" style="background-color: blanchedalmond;"></div>
+        <div id="userMessage" class="mt-4 text text-danger"></div>
+
+        <div class="mt-4">
+            <h2>Obtener todos los usuarios</h2>
+            <button id="getAllUsers" class="btn btn-primary">Obtener Usuarios</button>
+        </div>
+
+        <div class="mt-4">
+            <h2>Obtener usuario por índice</h2>
+            <input type="number" id="userIndex" placeholder="Índice del usuario">
+            <button id="getUserByIndex" class="btn btn-primary">Obtener Usuario</button>
+        </div>
+
+        <div class="mt-4">
+            <h2>Añadir usuario</h2>
+            <form id="addUserForm">
+                <input type="text" name="id" placeholder="ID" required>
+                <input type="text" name="nombre" placeholder="Nombre" required>
+                <input type="text" name="telefonos[casa]" placeholder="Teléfono Casa">
+                <input type="text" name="telefonos[movil]" placeholder="Teléfono Móvil">
+                <input type="text" name="telefonos[oficina]" placeholder="Teléfono Oficina">
+                <button type="submit" class="btn btn-success">Añadir Usuario</button>
+            </form>
+        </div>
+
+        <div class="mt-4">
+            <h2>Eliminar usuario por índice</h2>
+            <form id="deleteUserForm">
+                <input type="number" name="index" placeholder="Índice del usuario" required>
+                <button type="submit" class="btn btn-danger">Eliminar Usuario</button>
+            </form>
+        </div>
+
+        <div class="mt-4">
+            <h2>Actualizar usuario por índice</h2>
+            <form id="updateUserForm">
+                <input type="number" name="index" placeholder="Índice del usuario" required>
+                <input type="text" name="id" placeholder="Nuevo ID">
+                <input type="text" name="nombre" placeholder="Nuevo Nombre">
+                <input type="text" name="telefonos[casa]" placeholder="Nuevo Teléfono Casa">
+                <input type="text" name="telefonos[movil]" placeholder="Nuevo Teléfono Móvil">
+                <input type="text" name="telefonos[oficina]" placeholder="Nuevo Teléfono Oficina">
+                <button type="submit" class="btn btn-warning">Actualizar Usuario</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            function displayUsers(data) {
+                $('#userDisplay').empty();
+                if (data.length === 0) {
+                    $('#userDisplay').text('No hay usuarios registrados.');
+                } else {
+                    const list = $('<ul>');
+                    data.forEach(user => {
+                        const telefonos = [];
+                        if (user.telefonos.casa) {
+                            telefonos.push(`Teléfono casa: ${user.telefonos.casa}`);
+                        }
+                        if (user.telefonos.oficina) {
+                            telefonos.push(`Teléfono oficina: ${user.telefonos.oficina}`);
+                        }
+                        if (user.telefonos.movil) {
+                            telefonos.push(`Teléfono móvil: ${user.telefonos.movil}`);
+                        }
+                        const listItem = $('<li>').text(`ID: ${user.id}, Nombre: ${user.nombre}, ${telefonos.join(', ')}`);
+                        list.append(listItem);
+                    });
+                    $('#userDisplay').append(list);
+                }
+            }
+
+            function displayMessage(message) {
+                $('#userMessage').text(message);
+            }
+
+            // Obtener todos los usuarios
+            $('#getAllUsers').on('click', function() {
+                $.ajax({
+                    url: '/ejer2',
+                    method: 'GET',
+                    success: function(data) {
+                        displayUsers(data.usuarios_externos.usuario);
+                    },
+                    error: function(res) {
+                        displayMessage(res.responseJSON.error);
+                    }
+                });
+            });
+
+            // Obtener usuario por índice
+            $('#getUserByIndex').on('click', function() {
+                const index = $('#userIndex').val();
+                $.ajax({
+                    url: `/ejer2/${index}`,
+                    method: 'GET',
+                    success: function(data) {
+                        displayUsers([data]);
+                    },
+                    error: function(res) {
+                        displayMessage(res.responseJSON.error);
+                    }
+                });
+            });
+
+            // Añadir usuario
+            $('#addUserForm').on('submit', function(event) {
+                event.preventDefault();
+                const formData = $(this).serialize();
+                $.ajax({
+                    url: '/ejer2',
+                    method: 'POST',
+                    data: formData,
+                    success: function(data) {
+                        displayMessage('Usuario añadido con éxito.');
+                        $('#addUserForm')[0].reset();
+                        displayUsers([data]);
+                    },
+                    error: function(res) {
+                        displayMessage(res.responseJSON.error);
+                    }
+                });
+            });
+
+            // Eliminar usuario
+            $('#deleteUserForm').on('submit', function(event) {
+                event.preventDefault();
+                const formData = $(this).serialize();
+                $.ajax({
+                    url: '/ejer2/delete',
+                    method: 'POST',
+                    data: formData,
+                    success: function(data) {
+                        displayMessage('Usuario eliminado con éxito.');
+                        displayUsers(data);
+                    },
+                    error: function(res) {
+                        displayMessage(res.responseJSON.error);
+                    }
+                });
+            });
+
+            // Actualizar usuario
+            $('#updateUserForm').on('submit', function(event) {
+                event.preventDefault();
+                const formData = $(this).serialize();
+                $.ajax({
+                    url: '/ejer2/update',
+                    method: 'POST',
+                    data: formData,
+                    success: function(data) {
+                        displayMessage('Usuario actualizado con éxito.');
+                        displayUsers([data]);
+                    },
+                    error: function(res) {
+                        displayMessage(res.responseJSON.error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

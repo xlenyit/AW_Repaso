@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda de Contactos</title>
+  <script src="javascripts/jquery.min.js"></script>
+  <script  src="javascripts/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Agenda de Contactos</title>
+    </head>
+    <body>
+      <div class="container">
+        <h1 class="mt-5">Agenda de Contactos</h1>
+    
+        <div class="mb-3">
+          <a href="/contactos"><button class="btn btn-primary">Obtener Todos los Contactos</button></a>
+        </div>
+
+        <div class="mb-3">
+          <form action="/contactos/buscar"  method="get">
+            <button type="submit" class="btn btn-primary">Mostrar contacto con índice:</button>
+            <input type="text" name="id" id="id" class="form-control">
+          </form>
+        </div>
+        
+    
+        <div class="mb-3">
+          <h2>Añadir Contacto</h2>
+          <form id="addContactForm" action="/contactos/aniadir" method="post">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="typephone">Tipo de Teléfono</label>
+              <input type="text" class="form-control" id="typephone" name="typephone" required>
+              <label for="phone">Número de Teléfono</label>
+              <input type="text" class="form-control" id="phone" name="phone" required>
+            </div>
+            <button type="submit" class="btn btn-success">Añadir</button>
+          </form>
+        </div>
+    
+        <div class="mb-3">
+          <h2>Actualizar Contacto</h2>
+          <form id="updateContactForm" method="post" action="/contactos/update">
+            <div class="form-group">
+              <label for="updateId">ID</label>
+              <input type="number" class="form-control" id="updateId" name="updateId" >
+            </div>
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" >
+            </div>
+            <div class="form-group">
+              <label for="typephone">Tipo de Teléfono</label>
+              <input type="text" class="form-control" id="typephone" name="typephone" >
+              <label for="phone">Número de Teléfono</label>
+              <input type="text" class="form-control" id="phone" name="phone" >
+            </div>
+            <button type="submit" class="btn btn-warning">Actualizar</button>
+          </form>
+        </div>
+    
+        <div class="mb-3">
+          <h2>Eliminar Contacto</h2>
+          <form id="deleteContactForm" method="post" action="/contactos/delete">
+            <div class="form-group">
+              <label for="deleteId">ID</label>
+              <input type="number" class="form-control" id="deleteId" required>
+            </div>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+          </form>
+        </div>
+    
+        <div id="result"></div>
+      </div>
+</body>
+</html>

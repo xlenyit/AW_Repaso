@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Configurable</title>
+    <link rel="stylesheet" href="configurable.css">
+    <script src="../recursos/servidor/public/javascripts/jquery.min.js"></script>
+    
+    <script src="../recursos/servidor/public/javascripts/bootstrap.min.js"></script> 
+    <!-- <link href="../recursos/servidor/public/javascripts/bootstrap.min.js" rel="stylesheet">  -->
+    <link href="../recursos/servidor/public/stylesheets/bootstrap.min.css" rel="stylesheet"> 
+    <script src="configurable.js"></script>
+</head>
+<body>
+    <!-- Contenido de la página -->
+    <header>
+        <img src="ucm_logo.png" alt="Logo">
+        <h1>Título de la Página</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Acerca de</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div class="section bg-info" id="section1">
+            <h2>Sección 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
+                Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
+                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.
+                Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.
+                Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.
+                </p>
+        </div>
+
+        <div class="section" id="section2">
+            <h2>Sección 2</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.
+                Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.
+                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.
+                Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.
+                Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.
+                </p>
+        </div>
+    </div>
+
+    <button id="configButton">Configurar Página</button>
+
+    <!-- Modal -->
+    <div class="modal" id="configModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Configuración de Páaaaagina</h2>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Primera columna -->
+                                <label for="fontSize">Tamaño de Fuente:</label>
+                                <input type="range" class="form-control" id="fontSize" min="10" max="30">
+
+                                <label for="titleColor">Color de Títulos:</label>
+                                <input type="color" class="form-control" id="titleColor">
+
+
+                                <label for="sectionColor">Color de Fondo de Secciones:</label>
+                                <input type="color" class="form-control" id="sectionColor">
+
+                                <label for="section1Background">Color de Fondo de Sección 1:</label>
+                                <input type="color" class="form-control" id="section1Background">
+
+                                <label for="section2Background">Color de Fondo de Sección 2:</label>
+                                <input type="color" class="form-control" id="section2Background">
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Segunda columna -->
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="underlineLinks">
+                                    <label class="form-check-label" for="underlineLinks">Subrayar Enlaces</label>
+                                </div>
+                                <label for="linkColor">Color de Enlaces:</label>
+                                <input type="color" class="form-control" id="linkColor">
+                                <label for="visitedLinkColor">Color de Enlaces Visitados:</label>
+                                <input type="color" class="form-control" id="visitedLinkColor">
+                                <label for="navBackgroundColor">Color de Fondo de la Barra de Navegación:</label>
+                                <input type="color" class="form-control" id="navBackgroundColor">
+                                <label for="textColor">Color de Textos:</label>
+                                <input type="color" class="form-control" id="textColor">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="applyChanges">Aplicar Cambios</button>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div id="footerLinks">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Acerca de</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+        <div id="ucmInfo">
+            <img src="ucm_logo1.png" alt="UCM Logo">
+            <p>C/ Prof. José García Santesmases, 9.<br>
+            28040 - Madrid<br>
+            Tlfn: 91 394 75 01<br>
+            Fax: 91 394 75 10</p>
+        </div>
+    </footer>
+</body>
+</html>

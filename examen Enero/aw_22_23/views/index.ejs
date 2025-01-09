@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Examen de 10</title>
+    <!-- <script href='javascripts/bootstrap.min.css'></script> -->
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+  </head>
+  <body>
+    <div class="bg-info p-4 m-4">
+      <form action="/changePassword" method="POST">
+        <div class="col">
+          <div class="row justify-content-center">
+            <h1>Acceso</h1>
+          </div>
+          <div class="row">
+            <label>Login:</label>
+          </div>
+          <div class="row">
+            <input class="w-100" type="text" name="user">
+          </div>
+          <div class="row">
+            <label>Password:</label>
+          </div>
+          <div class="row">
+            <input class="w-100" type="password" name="password">
+          </div>
+          <br>
+          <div class="row">
+            <button type="submit" href="changePassword">Cambiar contraseña</button>
+          </div>
+          <div class="row justify-content-end">
+            <button class="btn btn-primary ">submit</button>
+          </div>
+        </div>
+        <% if(error) { %>
+          <p style="color:red"> El usuario o contraseña es incorrecto </p>
+        <% } %>
+        <a class="d-none" id-data="3">
+      </form>
+      
+    </div>
+  </body>
+</html>
